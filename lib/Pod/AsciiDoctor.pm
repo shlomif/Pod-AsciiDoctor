@@ -106,13 +106,15 @@ sub command
     # _sanitise: Escape AsciiDoctor syntax chars that appear in the paragraph.
     $paragraph = $self->_sanitise($paragraph);
 
-    if ( $command =~ /head(\d)/ )
+    if ( my ($input_level) = $command =~ /head([0-9])/ )
     {
-        my $level = $1;
+        my $level = $input_level;
         $level //= 2;
         $data->{command} = 'head';
-        $data->{topheaders}{$1} =
-            defined( $data->{topheaders}{$1} ) ? $data->{topheaders}{$1}++ : 1;
+        $data->{topheaders}{$input_level} =
+            defined( $data->{topheaders}{$input_level} )
+            ? $data->{topheaders}{$input_level}++
+            : 1;
         $paragraph = $self->set_formatting($paragraph);
         $self->append( $self->make_header( $command, $level, $paragraph ) );
     }
