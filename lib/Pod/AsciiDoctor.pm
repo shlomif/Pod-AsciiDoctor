@@ -1,9 +1,9 @@
 package Pod::AsciiDoctor;
 
-use 5.006;
+use 5.014;
 use strict;
 use warnings FATAL => 'all';
-use base 'Pod::Parser';
+use parent 'Pod::Parser';
 
 =head1 NAME
 
@@ -59,7 +59,7 @@ sub adoc
 sub _prop
 {
     my $self = shift;
-    $self->{prop} //= {
+    return $self->{prop} //= {
         'text'       => [],
         'headers'    => "",
         'topheaders' => {},
