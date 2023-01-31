@@ -232,6 +232,7 @@ sub make_header
     {
         return "* $paragraph";
     }
+    die "unimplemented";
 }
 
 =head2 make_text
@@ -262,7 +263,8 @@ sub set_formatting
     my $paragraph = shift;
     $paragraph =~ s/I<(.*)>/_$1_/;
     $paragraph =~ s/B<(.*)>/*$1*/;
-    $paragraph =~ s/B<(.*)>/*$1*/;
+
+    # $paragraph =~ s/B<(.*)>/*$1*/;
     $paragraph =~ s/C<(.*)>/\`$1\`/xms;
     return $paragraph;
 }
