@@ -201,10 +201,10 @@ sub interior_sequence
         elsif ( length($link) )
         {
             # Internal link
-            if ( $link =~ /(.+)\/(.+)/ )
+            if ( my ( $s, $e ) = $link =~ /(.+)\/(.+)/ )
             {
-                $ret = "<< $1#$2 >>";
-                $ret = "<< $1#$2,$text >>" if ($text);
+                $ret = "<< $s#$e >>";
+                $ret = "<< $s#$e,$text >>" if ($text);
             }
             else
             {
