@@ -9,14 +9,6 @@ use parent 'Pod::Parser';
 
 Pod::AsciiDoctor - Convert from POD to AsciiDoc
 
-=head1 VERSION
-
-Version 0.01
-
-=cut
-
-our $VERSION = '0.1';
-
 =head1 SYNOPSIS
 
 Converts the POD of a Perl module to AsciiDoc format.
