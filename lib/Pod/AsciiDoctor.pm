@@ -3,6 +3,8 @@ package Pod::AsciiDoctor;
 use 5.014;
 use strict;
 use warnings FATAL => 'all';
+
+use Pod::Parser 1.65 ();
 use parent 'Pod::Parser';
 
 =head1 NAME
