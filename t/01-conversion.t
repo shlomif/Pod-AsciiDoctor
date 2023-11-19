@@ -17,12 +17,16 @@ like(
 );
 
 # Test B<...>
-like( $adoc->adoc(), qr/\*test\*/, );
+like( $adoc->adoc(), qr/\*test\*/, "bold markup", );
 
 # Test I<...>
-like( $adoc->adoc(), qr/_grand_/, );
+like( $adoc->adoc(), qr/_grand_/, "italics markup", );
 
 # Test L<text|http://...>
-like( $adoc->adoc(), qr/reference \[Asciidoctor User Manual\]/, );
+like(
+    $adoc->adoc(),
+    qr/reference \[Asciidoctor User Manual\]/,
+    "hyperlink markup",
+);
 
 done_testing();
