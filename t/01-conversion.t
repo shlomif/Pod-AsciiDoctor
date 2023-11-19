@@ -10,18 +10,19 @@ my $adoc = Pod::AsciiDoctor->new();
 $adoc->parse_from_file("t/data/pod.pm");
 
 # Test C<...>
-ok(
-    $adoc->adoc() =~ /`\$x >> 3` or even `\$y >> 5`/,
-    "Converted C<<< \$x >> 3 >>> or even C<<<< \$y >> 5 >>>>."
+like(
+    $adoc->adoc(),
+    qr/`\$x >> 3` or even `\$y >> 5`/,
+    "Converted C<<< \$x >> 3 >>> or even C<<<< \$y >> 5 >>>>.",
 );
 
 # Test B<...>
-ok( $adoc->adoc() =~ /\*test\*/ );
+like( $adoc->adoc(), qr/\*test\*/, );
 
 # Test I<...>
-ok( $adoc->adoc() =~ /_grand_/ );
+like( $adoc->adoc(), qr/_grand_/, );
 
 # Test L<text|http://...>
-ok( $adoc->adoc() =~ /reference \[Asciidoctor User Manual\]/ );
+like( $adoc->adoc(), qr/reference \[Asciidoctor User Manual\]/, );
 
 done_testing();
