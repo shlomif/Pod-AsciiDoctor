@@ -236,12 +236,17 @@ sub make_header
 sub make_text
 {
     my ( $self, $paragraph, $list ) = @_;
+
     my @lines = split "\n", $paragraph;
     my $data  = $self->_prop;
     my @i_paragraph;
     my $pnt = $list ? "*" : "";
     for my $line (@lines)
     {
+        if ($list)
+        {
+            $line =~ s/\A\*\s*//ms;
+        }
         push @i_paragraph, $pnt x $data->{indent} . " " . $line . "\n";
     }
     return join "\n", @i_paragraph;
