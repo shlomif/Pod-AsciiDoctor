@@ -30,7 +30,7 @@ sub run
         die "Output filename not specified! Use the -o|--output flag!";
     }
     my $adoc = Pod::AsciiDoctor->new();
-    $adoc->parse_from_filehandle( path( shift @ARGV )->openr() );
+    $adoc->parse_from_filehandle( path( shift @ARGV )->openr_utf8() );
     my $USE_STDOUT = ( $output_fn eq '-' );
     if ($USE_STDOUT)
     {
